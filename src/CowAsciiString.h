@@ -58,7 +58,7 @@ public:
 	/**
 	 * @brief Returns a string length.
 	 */
-	int GetLength() const;
+	int getLength() const;
 
 	/**@}*/
 
@@ -73,7 +73,7 @@ public:
 	 * @note The function does not validate the index, if the index is out
 	 * of the bounds (0, GetLength() - 1), behavior is undefined.
 	 */
-	void SetChar(int index, char character);
+	void setChar(int index, char character);
 
 	/**
 	 * @brief Returns the value of a character at a specified index (starting from zero).
@@ -81,7 +81,7 @@ public:
 	 * @note The function does not validate the index, if the index is out
 	 * of the bounds (0, GetLength() - 1), behavior is undefined.
 	 */
-	char GetChar(int index) const;
+	char getChar(int index) const;
 
 	/**
 	 * @brief Returns the value of a character at a specified index (starting from zero).
@@ -103,12 +103,12 @@ public:
 	 *
 	 * @note If the character is the null terminator ('\0'), behavior is undefined.
 	 */
-	void Append(char character);
+	void append(char character);
 
 	/**
 	 * @brief Appends another string to this string.
 	 */
-	void Append(const CowAsciiString &other);
+	void append(const CowAsciiString &other);
 
 	/**
 	 * @brief Appends another string to this string.
@@ -136,7 +136,7 @@ public:
 	 * @note The function does not validate the index, if the index is out
 	 * of the bounds (0, GetLength() - 1), behavior is undefined.
 	 */
-	void Insert(const CowAsciiString &other, int index);
+	void insert(const CowAsciiString &other, int index);
 
 	/**
 	 * @brief Removes a range of characters from the string.
@@ -151,7 +151,7 @@ public:
 	 * to be removed is out of the bounds (0, GetLength() - 1),
 	 * behavior is undefined.
 	 */
-	void Remove(int startingIndex, int removedCharactersCount);
+	void remove(int startingIndex, int removedCharactersCount);
 
 	/**@}*/
 
@@ -166,7 +166,7 @@ public:
 	 * @note This method should only implement simple bitwise comparison (i.e. byte-to-byte equality),
 	 * no complex comparisons are required.
 	 */
-	bool Equals(const CowAsciiString &other) const;
+	bool equals(const CowAsciiString &other) const;
 
 	/**
 	 * @brief Returns true if strings are equal.
@@ -195,7 +195,7 @@ public:
 	 *
 	 * @return True if the character was found, false otherwise.
 	 */
-	bool Find(char character, /*out*/int &foundIndex) const;
+	bool find(char character, /*out*/int &foundIndex) const;
 
 	/**
 	 * @brief Searches for the first matching substring in a string.
@@ -207,7 +207,7 @@ public:
 	 *
 	 * @return True if the substring was found, false otherwise.
 	 */
-	bool Find(const CowAsciiString &substring, /*out*/int &foundIndex) const;
+	bool find(const CowAsciiString &substring, /*out*/int &foundIndex) const;
 
 	/**@}*/
 
@@ -234,9 +234,9 @@ public:
 	/**
 	 * @brief Assigns a plain null-terminated C-style string.
 	 */
-	void Assign(const char *source);
-	void Assign(const char *source, int size);
-	void Assign(const CowAsciiString& other);
+	void assign(const char *source);
+	void assign(const char *source, int size);
+	void assign(const CowAsciiString& other);
 	/**
 	 * @brief Assigns a plain null-terminated C-style string.
 	 */
@@ -253,7 +253,7 @@ public:
 	 * the function call <code>ToPlainString(buffer, 32)</code> will assume
 	 * that the maximal allowed number of characters to be copied is 31.
 	 */
-	void ToPlainString(/*out*/char *outputBuffer,
+	void toPlainString(/*out*/char *outputBuffer,
 			int maxOutputBufferSize) const;
 
 	/**@}*/

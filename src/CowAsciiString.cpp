@@ -23,7 +23,7 @@ CowAsciiString::CowAsciiString(const CowAsciiString &other) {
 	_buffer = nullptr;
 	_length = 0;
 
-	Assign(other);
+	assign(other);
 }
 //--------------------------------------------------------------------------
 CowAsciiString::CowAsciiString(const char *source) {
@@ -31,7 +31,7 @@ CowAsciiString::CowAsciiString(const char *source) {
 	_buffer = nullptr;
 	_length = 0;
 
-	Assign(source);
+	assign(source);
 }
 //--------------------------------------------------------------------------
 CowAsciiString::CowAsciiString(const char *source, int size) {
@@ -54,19 +54,19 @@ CowAsciiString::~CowAsciiString() {
 */
 }
 //--------------------------------------------------------------------------
-int CowAsciiString::GetLength() const {
+int CowAsciiString::getLength() const {
 
 	return _length;
 }
 //--------------------------------------------------------------------------
-void CowAsciiString::SetChar(int index, char character) {
+void CowAsciiString::setChar(int index, char character) {
 
 	if (_buffer != nullptr && 0 < index && index < _length) {
 		_buffer[index] = character;
 	}
 }
 //--------------------------------------------------------------------------
-char CowAsciiString::GetChar(int index) const {
+char CowAsciiString::getChar(int index) const {
 
 	if (_buffer != nullptr && 0 < index && index < _length) {
 		return _buffer[index];
@@ -84,14 +84,14 @@ char CowAsciiString::operator [](int index) const {
 	}
 }
 //--------------------------------------------------------------------------
-void CowAsciiString::Append(char character) {
+void CowAsciiString::append(char character) {
 
-	Append(CowAsciiString(&character, 1));
+	append(CowAsciiString(&character, 1));
 }
 //--------------------------------------------------------------------------
-void CowAsciiString::Append(const CowAsciiString &other) {
+void CowAsciiString::append(const CowAsciiString &other) {
 
-	if (other.GetLength() != 0) {
+	if (other.getLength() != 0) {
 		int length = _length + other._length;
 		char *buf = new char[length];
 		if (0 < _length) {
@@ -112,7 +112,7 @@ void CowAsciiString::Append(const CowAsciiString &other) {
 //--------------------------------------------------------------------------
 CowAsciiString& CowAsciiString::operator +=(const CowAsciiString &other) {
 
-	Append(other);
+	append(other);
 	return *this;
 }
 //--------------------------------------------------------------------------
@@ -138,11 +138,11 @@ CowAsciiString CowAsciiString::operator +(const CowAsciiString &other) const {
 	return str;
 }
 //--------------------------------------------------------------------------
-void CowAsciiString::Insert(const CowAsciiString &other, int index) {
+void CowAsciiString::insert(const CowAsciiString &other, int index) {
 
 	const int LENGTH = ((_length > 1) ? _length : 1);
 
-	if (other.GetLength() != 0 && 0 <= index && index < LENGTH) {
+	if (other.getLength() != 0 && 0 <= index && index < LENGTH) {
 		int length = _length + other._length;
 		char *buf = new char[length];
 
@@ -165,7 +165,7 @@ void CowAsciiString::Insert(const CowAsciiString &other, int index) {
 	}
 }
 //--------------------------------------------------------------------------
-void CowAsciiString::Remove(int startingIndex, int removedCharactersCount) {
+void CowAsciiString::remove(int startingIndex, int removedCharactersCount) {
 
 	if (0 <= startingIndex && startingIndex < _length && 0 < removedCharactersCount) {
 		this->mymemmove(_buffer + startingIndex, _buffer + startingIndex + removedCharactersCount, removedCharactersCount);
@@ -174,7 +174,7 @@ void CowAsciiString::Remove(int startingIndex, int removedCharactersCount) {
 
 }
 //--------------------------------------------------------------------------
-bool CowAsciiString::Equals(const CowAsciiString &other) const {
+bool CowAsciiString::equals(const CowAsciiString &other) const {
 
 	if (_length == other._length
 			&& (this->mymemcmp(_buffer, other._buffer, _length) == 0)) {
@@ -186,7 +186,7 @@ bool CowAsciiString::Equals(const CowAsciiString &other) const {
 //--------------------------------------------------------------------------
 bool CowAsciiString::operator ==(const CowAsciiString &other) const {
 
-	return Equals(other);
+	return equals(other);
 
 }
 //--------------------------------------------------------------------------
@@ -195,7 +195,7 @@ bool CowAsciiString::operator !=(const CowAsciiString &other) const {
 	return !(*this == other);
 }
 //--------------------------------------------------------------------------
-bool CowAsciiString::Find(char character, int &foundIndex) const {
+bool CowAsciiString::find(char character, int &foundIndex) const {
 
 	foundIndex = -1;
 
@@ -208,7 +208,7 @@ bool CowAsciiString::Find(char character, int &foundIndex) const {
 	return false;
 }
 //--------------------------------------------------------------------------
-bool CowAsciiString::Find(const CowAsciiString &substring,
+bool CowAsciiString::find(const CowAsciiString &substring,
 		int &foundIndex) const {
 
 	foundIndex = -1;
@@ -223,20 +223,20 @@ bool CowAsciiString::Find(const CowAsciiString &substring,
 	return false;
 }
 //--------------------------------------------------------------------------
-void CowAsciiString::Assign(const char *source) {
+void CowAsciiString::assign(const char *source) {
 
 	if (source != nullptr) {
 		int length = this->mystrlen(source);
-		Assign(source, length);
+		assign(source, length);
 	}
 }
 //--------------------------------------------------------------------------
-void CowAsciiString::Assign(const CowAsciiString& other) {
+void CowAsciiString::assign(const CowAsciiString& other) {
 
-    Assign(other._buffer, other._length);
+    assign(other._buffer, other._length);
 }
 //--------------------------------------------------------------------------
-void CowAsciiString::Assign(const char *source, int size) {
+void CowAsciiString::assign(const char *source, int size) {
 
 	if (source != nullptr) {
 		if (_buffer != nullptr) {
@@ -253,11 +253,11 @@ void CowAsciiString::Assign(const char *source, int size) {
 //--------------------------------------------------------------------------
 CowAsciiString& CowAsciiString::operator =(const char *source) {
 
-	Assign(source);
+	assign(source);
 	return *this;
 }
 //--------------------------------------------------------------------------
-void CowAsciiString::ToPlainString(char *outputBuffer,
+void CowAsciiString::toPlainString(char *outputBuffer,
 		int maxOutputBufferSize) const {
 
 	if (outputBuffer != nullptr) {

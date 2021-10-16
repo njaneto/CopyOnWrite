@@ -32,9 +32,9 @@ void CowAsciiString_test::test_GetLength(void) {
 	CowAsciiString str("world!!!");
 	std::cout << std::endl;
 	std::cout << "str: " << str << std::endl;
-	std::cout << "getLength: " << str.GetLength() << std::endl;
+	std::cout << "getLength: " << str.getLength() << std::endl;
 
-	assert(str.GetLength() > 1);
+	assert(str.getLength() > 1);
 }
 //---------------------------------------------------------------------------
 void CowAsciiString_test::test_SetChar_GetChar(void) {
@@ -42,11 +42,11 @@ void CowAsciiString_test::test_SetChar_GetChar(void) {
 	CowAsciiString str("Hello");
 	std::cout << std::endl;
     std::cout << "str: " << str << std::endl;
-    str.SetChar(4,'-');
+    str.setChar(4,'-');
     std::cout << "str: " << str << std::endl;
-    std::cout << "str.GetChar(4): " << str.GetChar(4) << std::endl;
+    std::cout << "str.GetChar(4): " << str.getChar(4) << std::endl;
 
-	assert(str.GetChar(4) == '-');
+	assert(str.getChar(4) == '-');
 
 }
 //---------------------------------------------------------------------------
@@ -57,11 +57,11 @@ void CowAsciiString_test::test_Append_other(void) {
 	std::cout << "str: " << str << std::endl;
 	CowAsciiString str2("B");
 	std::cout << "str2: " << str2 << std::endl;
-    str.Append(str2);
+    str.append(str2);
 	std::cout << "str: " << str << std::endl;
 
 	int pos;
-	assert(str.Find('B', pos));
+	assert(str.find('B', pos));
 
 }
 //---------------------------------------------------------------------------
@@ -72,10 +72,10 @@ void CowAsciiString_test::test_Insert_other_index(void) {
     std::cout << "str: " << str << std::endl;
 	CowAsciiString str2("Hello");
     std::cout << "str2: " << str2 << std::endl;
-    str2.Insert(str,1);
+    str2.insert(str,1);
     std::cout << "str2: " << str2 << std::endl;
 
-	assert(str2.GetLength() > 4);
+	assert(str2.getLength() > 4);
 }
 //---------------------------------------------------------------------------
 void CowAsciiString_test::test_Remove_startingIndex_removedCharactersCount(void) {
@@ -83,11 +83,11 @@ void CowAsciiString_test::test_Remove_startingIndex_removedCharactersCount(void)
 	CowAsciiString str("Hello, world!!!");
 	std::cout << std::endl;
     std::cout << "str: " << str << std::endl;
-	str.Remove(1, 5);
+	str.remove(1, 5);
     std::cout << "str: " << str << std::endl;
 
 	int pos;
-	assert(!str.Find('d', pos));
+	assert(!str.find('d', pos));
 
 }
 //---------------------------------------------------------------------------
@@ -112,11 +112,11 @@ void CowAsciiString_test::test_Find_substring_foundIndex(void) {
     std::cout << "str: " << str << std::endl;
 
     int pos;
-    str.Find(" ", pos);
-    str.Insert(str, pos);
+    str.find(" ", pos);
+    str.insert(str, pos);
     std::cout << "str: " << str << std::endl;
 
-    assert(str.GetLength() > 14);
+    assert(str.getLength() > 14);
 
 }
 //---------------------------------------------------------------------------
@@ -126,7 +126,7 @@ void CowAsciiString_test::test_Assign_other(void) {
 	std::cout << std::endl;
     std::cout << "str: " << str << std::endl;
 	CowAsciiString str2("Hello, ");
-	str2.Assign(str+str2);
+	str2.assign(str+str2);
 
     std::cout << "str2: " << str2 << std::endl;
 
@@ -140,12 +140,12 @@ void CowAsciiString_test::test_ToPlainString_outputBuffer_maxOutputBufferSize(vo
 	std::cout << std::endl;
 
 	char buffer[13];
-    str.ToPlainString(buffer, 13);
+    str.toPlainString(buffer, 13);
 
     std::cout << "str: " <<  str << std::endl;
     std::cout << "buffer: " <<  buffer << std::endl;
 
-	assert(str.GetLength());
+	assert(str.getLength());
 
 }
 //---------------------------------------------------------------------------

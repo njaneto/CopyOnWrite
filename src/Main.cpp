@@ -23,12 +23,12 @@ int main(int argc, char* argv[])
 
     std::cout << "str == str_2: " << (str == str_2) << std::endl;
     int pos;
-    str.Find(" ", pos);
-    str.Insert(str, pos);
+    str.find(" ", pos);
+    str.insert(str, pos);
     std::cout << "str: " << str << std::endl;
 
     char buffer[30];
-    str_2.ToPlainString(buffer, 30);
+    str_2.toPlainString(buffer, 30);
 
     std::cout << buffer << std::endl;
 
